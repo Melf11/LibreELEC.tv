@@ -11,14 +11,8 @@ PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
 	echo "############################### START ###############################"
-	#echo $(get_install_dir kodi)
-	#echo $(get_install_dir kodi-theme-Embuary)
-	#echo $PKG_BUILD
 	echo "# Create addon folder and copy build content to final destination...#"
   	mkdir -p $INSTALL/usr/share/kodi/addons/
   	cp -a $PKG_BUILD $INSTALL/usr/share/kodi/addons/
 	echo "################################ END ################################"
 }
-
-
-# shasum -a 256
