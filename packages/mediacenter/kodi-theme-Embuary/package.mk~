@@ -10,14 +10,13 @@ PKG_LONGDESC="Kodi Mediacenter Embuary theme by sualfred modded by Radio Koch Ma
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-	echo "############################### START ###############################"
-	#echo $(get_install_dir kodi)
-	#echo $(get_install_dir kodi-theme-Embuary)
-	#echo $PKG_BUILD
-	echo "# Create addon folder and copy build content to final destination...#"
+	echo "##################### TEST TEST TEST ######################"
+	echo $(get_install_dir kodi)
+	echo $(get_install_dir kodi-theme-Embuary)
+	echo $PKG_BUILD
+	echo "##################### END END END ######################"
   	mkdir -p $INSTALL/usr/share/kodi/addons/
-  	cp -a $PKG_BUILD $INSTALL/usr/share/kodi/addons/
-	echo "################################ END ################################"
+  	cp -a $(get_install_dir kodi)/.noinstall/skin.embuary-matrix-moddedByRadioKoch $INSTALL/usr/share/kodi/addons/
 }
 
 
