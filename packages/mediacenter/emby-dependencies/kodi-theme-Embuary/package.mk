@@ -34,6 +34,7 @@ makeinstall_target() {
   	unzip -q $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_FILENAME.zip -d $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME
   	rm $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_FILENAME.zip
   	cp -a $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/* $INSTALL/usr/share/kodi/addons/$EMBY_DEPENDENCY_NAME
+  	cp -a $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/* $INSTALL/usr/share/kodi/addons/$EMBY_DEPENDENCY_NAME
 
 	###############################################################################################
 	EMBY_DEPENDENCY_NAME="script.module.unidecode"
@@ -267,33 +268,59 @@ makeinstall_target() {
   	rm $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_FILENAME.tar.gz
   	cp -a $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/* $INSTALL/usr/share/kodi/addons/$EMBY_DEPENDENCY_NAME
 
-
-
 	echo '#################################### List installed addons  ####################################'
 	ls -l $INSTALL/usr/share/kodi/addons
 	echo '#################################### -+ END +- ####################################'
+
+
+
+	###############################################################################################
+	######################################### Add Config ##########################################
+	###############################################################################################
+	EMBY_DEPENDENCY_NAME="boatsman-config"
+	EMBY_DEPENDENCY_VERSION="0.0.1"
+	EMBY_DEPENDENCY_GIT="https://github.com/Melf11/boatsman-config"
+	EMBY_DEPENDENCY_FILENAME=$EMBY_DEPENDENCY_NAME-$EMBY_DEPENDENCY_VERSION
+
+  	wget $EMBY_DEPENDENCY_GIT/archive/$EMBY_DEPENDENCY_VERSION.tar.gz -O $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_FILENAME.tar.gz
+	mkdir $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME
+  	tar -xf $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_FILENAME.tar.gz -C $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME
+  	rm $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_FILENAME.tar.gz
+
+  	cp -a $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/* $INSTALL/usr/share/kodi/addons/$EMBY_DEPENDENCY_NAME
 }
 
+post_install() {
 
-#Included
-#<import addon="xbmc.python" version="3.0.0"/>
-#<import addon="xbmc.gui" version="5.14.0"/>
-#<import addon="script.embuary.helper" version="1.3.6"/>
-#<import addon="script.embuary.info" version="1.2.4"/>
-#<import addon="script.skinshortcuts" version="1.0.17"/>
-#<import addon="resource.uisounds.embuary" version="0.0.4"/>
-#<import addon="plugin.program.autocompletion" version="1.0.1"/>
-#<import addon="script.module.unidecode" version="0.4.14"/>
-#<import addon="script.module.simpleeval" version="0.9.10"/>
-#<import addon="script.module.requests" version="2.9.1"/>
-#<import addon="script.module.certifi" version="2019.11.28+matrix.1"/>
-#<import addon="script.module.chardet" version="3.0.4+matrix.1"/>
-#<import addon="script.module.idna" version="2.8.1+matrix.1"/>
-#<import addon="script.module.urllib3" version="1.25.8+matrix.1"/>
-#<import addon="script.module.arrow" version="0.10.0"/>
-#<import addon="script.module.simplecache" version="1.0.17" />
-#<import addon="script.module.routing" version="0.2.0"/>
-#<import addon="script.module.simplejson" version="3.3.0"/>
+  mkdir -p $INSTALL/usr/lib/systemd/system
+  cp $PKG_DIR/scripts/kodi-theme-Embuary $INSTALL/usr/bin
 
-#Not Included
-#<import addon="script.module.pil" version="1.1.7"/>
+  enable_service kodi-theme-Embuary.service
+
+  # update addon manifest / enable addon in Kodi
+#  ADDON_MANIFEST=$INSTALL/usr/share/kodi/system/addon-manifest.xml
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "kodi-theme-Embuary" $ADDON_MANIFEST
+
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.skinshortcuts" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.unidecode" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.simpleeval" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.requests" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.certifi" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.chardet" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.idna" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.urllib3" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.arrow" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.simplecache" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.routing" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.simplejson" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.autocompletion" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "plugin.program.autocompletion" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.dateutil" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.module.six" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "kodi-theme-Embuary" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "plugin.video.embycon" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.embuary.helper" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "script.embuary.info" $ADDON_MANIFEST
+#  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "resource.uisounds.embuary" $ADDON_MANIFEST
+
+}
