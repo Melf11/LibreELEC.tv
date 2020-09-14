@@ -1,7 +1,7 @@
 [Unit]
 Description=Embuary addons copy script
-Before=kodi.service
-After=network-online.target graphical.target
+Before=kodi-waitonnetwork.service
+After=connman.service
 
 [Service]
 Type=oneshot

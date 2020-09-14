@@ -333,7 +333,7 @@ makeinstall_target() {
 	## Add Boatsman Config
 	###############################################################################################
 	EMBY_DEPENDENCY_NAME="boatsman-config"
-	EMBY_DEPENDENCY_VERSION="9c11e2d1a7a50d3a6378783cf3f4b81d8ae7167c"
+	EMBY_DEPENDENCY_VERSION="c25acda32db8074201604ba2be2489087fe61ab0"
 	EMBY_DEPENDENCY_GIT="https://github.com/Melf11/boatsman-config"
 	EMBY_DEPENDENCY_FILENAME=$EMBY_DEPENDENCY_NAME-$EMBY_DEPENDENCY_VERSION
 

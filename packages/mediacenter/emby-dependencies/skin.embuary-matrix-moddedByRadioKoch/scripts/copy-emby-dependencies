@@ -4,8 +4,8 @@ KODI_ROOT=$HOME/.kodi
 
 # May not exist if testing a clean /storage/.kodi without rebooting
 mkdir -p $KODI_ROOT/addons
-cp /usr/share/kodi/addons/script.skinshortcuts $KODI_ROOT/addons
-cp /usr/share/kodi/addons/skin.embuary-matrix-moddedByRadioKoch $KODI_ROOT/addons
+cp -r /usr/share/kodi/addons/script.skinshortcuts $KODI_ROOT/addons
+cp -r /usr/share/kodi/addons/skin.embuary-matrix-moddedByRadioKoch $KODI_ROOT/addons
 
 # copy userdata
 mkdir -p $KODI_ROOT/userdata
@@ -13,3 +13,10 @@ cp -r /usr/share/kodi/userdata/addon_data $KODI_ROOT/userdata
 
 # copy settings
 cp /usr/share/kodi/system/advancedsettings.xml $KODI_ROOT/userdata/advancedsettings.xml
+
+# enable waitfornetwork
+mkdir -p /storage/.cache/libreelec/
+cat << EOL > /storage/.cache/libreelec/network_wait
+WAIT_NETWORK="true"
+WAIT_NETWORK_TIME="10"
+EOL
