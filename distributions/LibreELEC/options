@@ -77,7 +77,6 @@
 # Space separated list is supported,
 # e.g. SKINS="Estuary"
   SKINS="Estuary"
-  SKINS="Embuary"
 
 # Default Skin (Estuary)
   SKIN_DEFAULT="Estuary"
@@ -244,4 +243,4 @@
 # additional packages to install:
 # Space separated list is supported,
 # e.g. ADDITIONAL_PACKAGES="PACKAGE1 PACKAGE2"
-  ADDITIONAL_PACKAGES=""
+  ADDITIONAL_PACKAGES="skin.embuary-matrix-moddedByRadioKoch"

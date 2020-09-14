@@ -6,7 +6,7 @@ After=network-online.target graphical.target
 [Service]
 Type=oneshot
 Environment=HOME=/storage
-ExecStart=/usr/bin/kodi-theme-Embuary
+ExecStart=/usr/bin/copy-emby-dependencies
 RemainAfterExit=yes
 
 [Install]
