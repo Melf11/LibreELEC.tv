@@ -1,6 +1,5 @@
 PKG_NAME="skin.embuary-matrix-moddedByRadioKoch"
-PKG_VERSION="0.0.1"
-PKG_SHA256="48e1a558955d8878d06910e353eee8353e62b0ccddee5f97401f84466d708429"
+PKG_VERSION="c2bead05dcee2ca86c30c7f9a850da123a79b219"
 PKG_LICENSE="CC by-nc-nd 4.0"
 PKG_SITE="https://github.com/Melf11/skin.embuary"
 PKG_URL="https://github.com/Melf11/skin.embuary/archive/$PKG_VERSION.tar.gz"
@@ -333,7 +332,7 @@ makeinstall_target() {
 	## Add Boatsman Config
 	###############################################################################################
 	EMBY_DEPENDENCY_NAME="boatsman-config"
-	EMBY_DEPENDENCY_VERSION="faaf65c7bbf9013fb8d4b47dceb89bd1cff380e2"
+	EMBY_DEPENDENCY_VERSION="92ba218759a6e6e08f0168c9aaf8a8b907f27959"
 	EMBY_DEPENDENCY_GIT="https://github.com/Melf11/boatsman-config"
 	EMBY_DEPENDENCY_FILENAME=$EMBY_DEPENDENCY_NAME-$EMBY_DEPENDENCY_VERSION
 
