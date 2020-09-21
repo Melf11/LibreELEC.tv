@@ -332,7 +332,7 @@ makeinstall_target() {
 	## Add Boatsman Config
 	###############################################################################################
 	EMBY_DEPENDENCY_NAME="boatsman-config"
-	EMBY_DEPENDENCY_VERSION="ede5aec7fc18c03585487fecd0ac996b6281cabc"
+	EMBY_DEPENDENCY_VERSION="6529d3383644fc4ddc7ad28932c8126fe6dca7c6"
 	EMBY_DEPENDENCY_GIT="https://github.com/Melf11/boatsman-config"
 	EMBY_DEPENDENCY_FILENAME=$EMBY_DEPENDENCY_NAME-$EMBY_DEPENDENCY_VERSION
 
@@ -345,10 +345,12 @@ makeinstall_target() {
 	## Add splash screens
 	mkdir -p $INSTALL/usr/share/kodi/media
 	## Add kodi splash scree
-	cp $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/$EMBY_DEPENDENCY_FILENAME/splash/splash.jpg $INSTALL/usr/share/kodi/media/splash.jpg
+	cp $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/$EMBY_DEPENDENCY_FILENAME/splash/* $INSTALL/usr/share/kodi/media/
+	cp $INSTALL/usr/share/kodi/media/splash-2160.png $INSTALL/usr/share/kodi/media/splash.png
 
 	## Add libreelec splash screens
-  cp $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/$EMBY_DEPENDENCY_FILENAME/splash/*  $DISTRO_DIR/$DISTRO/splash
+#	mkdir -p $INSTALL/flash
+#  cp $PKG_BUILD/dependencies/$EMBY_DEPENDENCY_NAME/$EMBY_DEPENDENCY_FILENAME/splash/splash-2160.png  $INSTALL/flash/oemsplash.png
 
 
 	echo '##############################################################'

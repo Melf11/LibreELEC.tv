@@ -2,6 +2,7 @@
 Description=Embuary addons copy script
 Before=kodi-waitonnetwork.service
 After=connman.service
+ConditionFirstBoot=yes
 
 [Service]
 Type=oneshot

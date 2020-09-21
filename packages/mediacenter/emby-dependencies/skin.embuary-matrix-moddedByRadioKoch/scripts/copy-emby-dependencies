@@ -7,6 +7,11 @@ mkdir -p $KODI_ROOT/addons
 cp -r /usr/share/kodi/addons/script.skinshortcuts $KODI_ROOT/addons
 cp -r /usr/share/kodi/addons/skin.embuary-matrix-moddedByRadioKoch $KODI_ROOT/addons
 
+# copy splashscreen
+mount -o remount,rw /flash
+cp /usr/share/kodi/media/splash-2160.png  /flash/oemsplash.png
+mount -o remount,ro /flash
+
 # copy userdata
 mkdir -p $KODI_ROOT/userdata
 cp -r /usr/share/kodi/userdata/addon_data $KODI_ROOT/userdata
